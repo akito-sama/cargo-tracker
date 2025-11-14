@@ -32,7 +32,7 @@
     <payara.version>6.2025.3</payara.version>
     <payara.arquillian.adapter.version>3.1</payara.arquillian.adapter.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
-    <sonar.coverage.jacoco.xmlReportPaths>/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -134,25 +134,33 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.11</version>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.11</version>
+    <executions>
+        <!-- Prepare JaCoCo agent before tests -->
+        <execution>
+            <id>prepare-agent</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
 
-        <executions>
-          <!-- Attach JaCoCo agent during tests -->
-          <execution>
-            <id>jacoco-report-xml</id>
+        <!-- Generate report after tests -->
+        <execution>
+            <id>report</id>
             <phase>verify</phase>
             <goals>
                 <goal>report</goal>
             </goals>
             <configuration>
-                <outputDirectory>/target/site/jacoco</outputDirectory>
+                <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
                 <output>jacoco.xml</output>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
+        </execution>
+    </executions>
+</plugin>
+
 
     </plugins>
   </build>
