@@ -145,8 +145,6 @@
                 <goal>prepare-agent</goal>
             </goals>
         </execution>
-
-        <!-- Generate report after tests -->
         <execution>
             <id>report</id>
             <phase>verify</phase>
@@ -160,8 +158,31 @@
         </execution>
     </executions>
 </plugin>
-
-
+<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.6.0</version>
+            <executions>
+                <execution>
+                    <id>copy-postgresql-driver</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>copy</goal>
+                    </goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>org.postgresql</groupId>
+                                <artifactId>postgresql</artifactId>
+                                <version>42.7.1</version>
+                                <outputDirectory>${project.build.directory}</outputDirectory>
+                                <destFileName>postgresql.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
   <profiles>
