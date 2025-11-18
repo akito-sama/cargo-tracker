@@ -2,7 +2,6 @@
 .git
 .gitignore
 README.md
-**/target/
 **/.settings/
 **/.project
 **/.classpath
