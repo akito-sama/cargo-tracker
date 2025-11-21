@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('Build & Test with Coverage') {
+        stage('Build & Test') {
             steps {
                 bat 'mvn clean verify'
             }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     bat "docker build -t cargo-tracker ."
-                    bat "docker run -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker"
+                    bat "docker run -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker ."
                 }
             }
         }
