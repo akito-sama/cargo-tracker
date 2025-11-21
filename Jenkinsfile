@@ -53,7 +53,7 @@ pipeline {
                     bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
 
                     // push with sequential uploads
-                    bat "docker --config C:\\Jenkins\\.docker push --max-concurrent-uploads=1 mouadensafir/cargo-tracker:latest"
+                    bat "docker push mouadensafir/cargo-tracker:latest"
                 }
             }
         }
