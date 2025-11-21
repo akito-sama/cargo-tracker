@@ -57,18 +57,20 @@ pipeline {
         }
 
 
-
-        stage('Run App') {
+        stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    // stop old container if exists
-                    bat 'docker rm -f cargo-tracker-app || echo "No existing container"'
+                    // Appliquer les manifests
+                    bat "kubectl apply -f k8s/deployment.yaml"
+                    bat "kubectl apply -f k8s/service.yaml"
+                    bat "kubectl apply -f k8s/ingress.yaml"
 
-                    // run new one
-                    bat 'docker run -d -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker'
+                    // Vérifier que les pods sont Running
+                    bat "kubectl get pods"
                 }
             }
         }
+
 
 
     }
