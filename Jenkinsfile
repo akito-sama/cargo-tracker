@@ -43,16 +43,21 @@ pipeline {
             }
             steps {
                 script {
-                    // login to Docker Hub
-                    bat "docker login -u mouadensafir -p %DOCKER_TOKEN%"
+                    // login securely
+                    bat """
+                    echo %DOCKER_TOKEN% | docker login -u mouadensafir --password-stdin
+                    """
 
-                    // build, tag and push the image
+                    // build and tag
                     bat "docker build -t cargo-tracker ."
                     bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
-                    bat "docker push mouadensafir/cargo-tracker:latest"
+
+                    // push with sequential uploads
+                    bat "docker --config C:\\Jenkins\\.docker push --max-concurrent-uploads=1 mouadensafir/cargo-tracker:latest"
                 }
             }
         }
+
 
 
         stage('Run App') {
