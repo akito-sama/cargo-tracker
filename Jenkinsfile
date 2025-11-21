@@ -41,6 +41,7 @@ pipeline {
             steps {
                 script {
                     bat "docker build -t cargo-tracker ."
+                    bat "docker run -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker"
                 }
             }
         }
