@@ -41,11 +41,12 @@ pipeline {
             steps {
                 script {
                     bat "docker build -t cargo-tracker ."
-                    bat "docker tag cargo-tracker moudensafir/cargo-tracker:latest"
+                    bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
                     bat "docker push mouadensafir/cargo-tracker:latest"
                 }
             }
         }
+
 
         stage('Run App') {
             steps {
