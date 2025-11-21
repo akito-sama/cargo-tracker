@@ -37,7 +37,13 @@ pipeline {
             }
         }
 
-        // stage
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    bat "docker build -t cargo-tracker ."
+                }
+            }
+        }
     }
 
     post {
