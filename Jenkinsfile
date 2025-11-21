@@ -41,10 +41,25 @@ pipeline {
             steps {
                 script {
                     bat "docker build -t cargo-tracker ."
-                    bat "docker run -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker ."
+                    bat "docker tag cargo-tracker moudensafir/cargo-tracker:latest"
+                    bat "docker push mouadensafir/cargo-tracker:latest"
                 }
             }
         }
+
+        stage('Run App') {
+            steps {
+                script {
+                    // stop old container if exists
+                    bat 'docker rm -f cargo-tracker-app || echo "No existing container"'
+
+                    // run new one
+                    bat 'docker run -d -p 8080:8080 -p 4848:4848 --name cargo-tracker-app cargo-tracker'
+                }
+            }
+        }
+
+
     }
 
     post {
