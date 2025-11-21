@@ -38,8 +38,15 @@ pipeline {
         }
 
         stage('Docker Build & Push') {
+            environment {
+                DOCKER_TOKEN = credentials('docker-token-id')
+            }
             steps {
                 script {
+                    // login to Docker Hub
+                    bat "docker login -u mouadensafir -p %DOCKER_TOKEN%"
+
+                    // build, tag and push the image
                     bat "docker build -t cargo-tracker ."
                     bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
                     bat "docker push mouadensafir/cargo-tracker:latest"
