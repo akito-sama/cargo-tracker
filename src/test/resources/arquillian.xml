@@ -10,7 +10,7 @@
     <configuration>
       <property name="randomHttpPort">false</property>
       <property name="autoBindHttp">false</property>
-      <property name="extraMicroOptions">--port 9090 --contextroot cargo-tracker-test</property>
+      <property name="extraMicroOptions">--port 9009 --contextroot cargo-tracker-test</property>
     </configuration>
   </container>
   <container qualifier="glassfish">

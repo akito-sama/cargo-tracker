@@ -348,7 +348,7 @@
               </execution>
             </executions>
           </plugin>
-          <!-- This modifies configuration of GlassFish for tests - changes the HTTP port to 9090 -->
+          <!-- This modifies configuration of GlassFish for tests - changes the HTTP port to 9009 -->
           <plugin>
             <artifactId>maven-antrun-plugin</artifactId>
             <version>3.1.0</version>
@@ -357,7 +357,7 @@
                 <phase>process-test-classes</phase>
                 <configuration>
                   <target>
-                    <replace file="${project.build.directory}/glassfish7/glassfish/domains/domain1/config/domain.xml" token="&quot;8080&quot;" value="&quot;9090&quot;"/>
+                    <replace file="${project.build.directory}/glassfish7/glassfish/domains/domain1/config/domain.xml" token="&quot;8080&quot;" value="&quot;9009&quot;"/>
                   </target>
                 </configuration>
                 <goals>
