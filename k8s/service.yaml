@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cargo-tracker-service
+spec:
+  selector:
+    app: cargo-tracker
+  ports:
+    - protocol: TCP
+      port: 80      
+      targetPort: 8080 
+  type: ClusterIP

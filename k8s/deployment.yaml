@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cargo-tracker-deployment
+  labels:
+    app: cargo-tracker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cargo-tracker
+  template:
+    metadata:
+      labels:
+        app: cargo-tracker
+    spec:
+      containers:
+      - name: cargo-tracker
+        image: mouadensafir/cargo-tracker:latest
+        ports:
+        - containerPort: 8080  # adapte selon ton app
+        env:
+        - name: ENVIRONMENT
+          value: "production"

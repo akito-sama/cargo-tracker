@@ -48,11 +48,9 @@ pipeline {
                     echo %DOCKER_TOKEN% | docker login -u mouadensafir --password-stdin
                     """
 
-                    // build and tag
+                    // build and push
                     bat "docker build -t cargo-tracker ."
                     bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
-
-                    // push with sequential uploads
                     bat "docker push mouadensafir/cargo-tracker:latest"
                 }
             }
