@@ -18,7 +18,7 @@ spec:
       - name: cargo-tracker
         image: mouadensafir/cargo-tracker:latest
         ports:
-        - containerPort: 8080  
+        - containerPort: 8080
         env:
         - name: ENVIRONMENT
           value: "production"

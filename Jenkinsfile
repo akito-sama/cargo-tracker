@@ -59,13 +59,12 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    // bat "kubectl apply -f k8s/deployment.yaml"
-                    //bat "kubectl apply -f k8s/service.yaml"
-                    //bat "kubectl apply -f k8s/ingress.yaml"
-
-                    //bat "kubectl rollout restart deployment cargo-tracker-deployment"
-                    bat "kubectl get pods"
+                bat 'set KUBECONFIG=C:\Users\Mouad\.kube\config'
+                withCredentials([file(credentialsId: 'minikube-kubeconfig', variable: 'KUBECONFIG')]) {
+                    bat 'kubectl apply -f k8s/cargo-tracker/deployment.yaml'
+                    bat 'kubectl apply -f k8s/cargo-tracker/service.yaml'
+                    bat 'kubectl apply -f k8s/cargo-tracker/ingress.yaml'
+                    bat 'kubectl rollout restart deployment cargo-tracker-deployment'
                 }
             }
         }
