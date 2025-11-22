@@ -59,7 +59,6 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'set KUBECONFIG=C:\Users\Mouad\.kube\config'
                 withCredentials([file(credentialsId: 'minikube-kubeconfig', variable: 'KUBECONFIG')]) {
                     bat 'kubectl apply -f k8s/cargo-tracker/deployment.yaml'
                     bat 'kubectl apply -f k8s/cargo-tracker/service.yaml'
