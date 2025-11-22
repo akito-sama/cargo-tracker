@@ -60,18 +60,15 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    // Appliquer les manifests
                     bat "kubectl apply -f k8s/deployment.yaml"
                     bat "kubectl apply -f k8s/service.yaml"
                     bat "kubectl apply -f k8s/ingress.yaml"
 
-                    // Vérifier que les pods sont Running
+                    bat "kubectl rollout restart deployment cargo-tracker-deployment"
                     bat "kubectl get pods"
                 }
             }
         }
-
-
 
     }
 

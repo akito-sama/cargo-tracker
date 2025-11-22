@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: cargo.local 
+  - host: cargo-tracker-app.ma
     http:
       paths:
       - path: /
