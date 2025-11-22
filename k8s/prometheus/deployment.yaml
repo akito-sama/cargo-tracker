@@ -18,6 +18,8 @@ spec:
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus"
+            - "--web.listen-address=:8085"
+            
           ports:
             - containerPort: 8085
           volumeMounts:
