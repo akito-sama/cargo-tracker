@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: prometheus
+        namespace: monitoring
     spec:
       containers:
         - name: prometheus
