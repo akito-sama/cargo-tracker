@@ -14,7 +14,6 @@ public class VoyageNumberTest {
 
     assertEquals(a, b);
     assertEquals(a.hashCode(), b.hashCode());
-    assertTrue(a.sameValueAs(b));
     assertEquals("V001", a.getIdString());
 
     assertNotEquals(a, c);

@@ -21,10 +21,8 @@ public class UnLocodeTest {
 
     assertEquals(a, b);
     assertEquals(a.hashCode(), b.hashCode());
-    assertTrue(a.sameValueAs(b));
 
     assertNotEquals(a, c);
-    assertFalse(a.sameValueAs(c));
   }
 
   @Test

@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 public class StatusEnumsTest {
 
   @Test
-  public void testRoutingStatusSameValueAs() {
-    assertTrue(RoutingStatus.ROUTED.sameValueAs(RoutingStatus.ROUTED));
-    assertFalse(RoutingStatus.ROUTED.sameValueAs(RoutingStatus.MISROUTED));
+  public void testRoutingStatusValues() {
+    assertEquals(RoutingStatus.ROUTED, RoutingStatus.ROUTED);
+    assertNotEquals(RoutingStatus.ROUTED, RoutingStatus.MISROUTED);
   }
 
   @Test
-  public void testTransportStatusSameValueAs() {
-    assertTrue(TransportStatus.ONBOARD_CARRIER.sameValueAs(TransportStatus.ONBOARD_CARRIER));
-    assertFalse(TransportStatus.CLAIMED.sameValueAs(TransportStatus.UNKNOWN));
+  public void testTransportStatusValues() {
+    assertEquals(TransportStatus.ONBOARD_CARRIER, TransportStatus.ONBOARD_CARRIER);
+    assertNotEquals(TransportStatus.CLAIMED, TransportStatus.UNKNOWN);
   }
 }

@@ -14,12 +14,10 @@ public class TrackingIdTest {
 
     assertEquals(a, b);
     assertEquals(a.hashCode(), b.hashCode());
-    assertTrue(a.sameValueAs(b));
     assertEquals("ABC123", a.getIdString());
     assertEquals("ABC123", a.toString());
 
     assertNotEquals(a, c);
-    assertFalse(a.sameValueAs(c));
   }
 
   @Test
