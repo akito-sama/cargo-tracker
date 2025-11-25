@@ -4,17 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class UnLocodeTest {
+class UnLocodeTest {
 
   @Test
-  public void testValidUppercaseAndToString() {
+  void testValidUppercaseAndToString() {
     UnLocode ul = new UnLocode("usnyc");
     assertEquals("USNYC", ul.getIdString());
     assertEquals("USNYC", ul.toString());
   }
 
   @Test
-  public void testEqualsAndHashCode() {
+  void testEqualsAndHashCode() {
     UnLocode a = new UnLocode("usnyc");
     UnLocode b = new UnLocode("USNYC");
     UnLocode c = new UnLocode("NLAMS");
@@ -26,12 +26,12 @@ public class UnLocodeTest {
   }
 
   @Test
-  public void testInvalidPatternThrows() {
+  void testInvalidPatternThrows() {
     assertThrows(IllegalArgumentException.class, () -> new UnLocode("ABC"));
   }
 
   @Test
-  public void testNullThrows() {
+  void testNullThrows() {
     assertThrows(NullPointerException.class, () -> new UnLocode(null));
   }
 }

@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class TrackingIdTest {
+class TrackingIdTest {
 
   @Test
-  public void testEqualsHashCodeAndToString() {
+  void testEqualsHashCodeAndToString() {
     TrackingId a = new TrackingId("ABC123");
     TrackingId b = new TrackingId("ABC123");
     TrackingId c = new TrackingId("XYZ999");
@@ -21,7 +21,7 @@ public class TrackingIdTest {
   }
 
   @Test
-  public void testNullConstructorThrows() {
+  void testNullConstructorThrows() {
     assertThrows(NullPointerException.class, () -> new TrackingId(null));
   }
 }

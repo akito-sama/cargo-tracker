@@ -4,17 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class DomainObjectUtilsTest {
+class DomainObjectUtilsTest {
 
   @Test
-  public void testNullSafeReturnsActualWhenNotNull() {
+  void testNullSafeReturnsActualWhenNotNull() {
     String actual = "value";
     String safe = "safe";
     assertEquals(actual, DomainObjectUtils.nullSafe(actual, safe));
   }
 
   @Test
-  public void testNullSafeReturnsSafeWhenActualNull() {
+  void testNullSafeReturnsSafeWhenActualNull() {
     String safe = "safe";
     assertEquals(safe, DomainObjectUtils.nullSafe(null, safe));
   }

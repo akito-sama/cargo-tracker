@@ -4,17 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class StatusEnumsTest {
+class StatusEnumsTest {
 
   @Test
-  public void testRoutingStatusValues() {
-    assertEquals(RoutingStatus.ROUTED, RoutingStatus.ROUTED);
+  void testRoutingStatusValues() {
     assertNotEquals(RoutingStatus.ROUTED, RoutingStatus.MISROUTED);
   }
 
   @Test
-  public void testTransportStatusValues() {
-    assertEquals(TransportStatus.ONBOARD_CARRIER, TransportStatus.ONBOARD_CARRIER);
+  void testTransportStatusValues() {
     assertNotEquals(TransportStatus.CLAIMED, TransportStatus.UNKNOWN);
   }
 }
