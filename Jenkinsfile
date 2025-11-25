@@ -57,16 +57,16 @@ pipeline {
         }
 
 
-        // stage('Deploy to Kubernetes') {
-        //     steps {
-        //         withCredentials([file(credentialsId: 'minikube-kubeconfig', variable: 'KUBECONFIG')]) {
-        //             bat 'kubectl apply -f k8s/cargo-tracker/deployment.yaml'
-        //             bat 'kubectl apply -f k8s/cargo-tracker/service.yaml'
-        //             bat 'kubectl apply -f k8s/cargo-tracker/ingress.yaml'
-        //             bat 'kubectl rollout restart deployment cargo-tracker-deployment'
-        //         }
-        //     }
-        // }
+        stage('Deploy to Kubernetes') {
+            steps {
+                withCredentials([file(credentialsId: 'minikube-kubeconfig', variable: 'KUBECONFIG')]) {
+                    bat 'kubectl apply -f k8s/cargo-tracker/deployment.yaml'
+                    bat 'kubectl apply -f k8s/cargo-tracker/service.yaml'
+                    bat 'kubectl apply -f k8s/cargo-tracker/ingress.yaml'
+                    bat 'kubectl rollout restart deployment cargo-tracker-deployment'
+                }
+            }
+        }
 
     }
 
