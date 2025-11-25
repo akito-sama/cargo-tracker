@@ -19,6 +19,6 @@ data:
           - targets: ['localhost:3000']
 
       - job_name: 'cargo-tracker'
-        mtrics_path: '/metrics'
+        metrics_path: '/metrics'
         static_configs:
           - targets: ['cargo-tracker-service:80']
