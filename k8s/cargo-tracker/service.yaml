@@ -10,4 +10,3 @@ spec:
       port: 80        # ClusterIP port
       targetPort: 8080 # Container port
   type: ClusterIP
-  
