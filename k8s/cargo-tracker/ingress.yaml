@@ -5,7 +5,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingreressClassName: nginx
+  ingressClassName: nginx
   rules:
     - host: cargo.local
       http:
