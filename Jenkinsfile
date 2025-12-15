@@ -63,14 +63,14 @@ pipeline {
             }
         }
 
-        // stage('Monitoring Setup') {
-        //     steps {
-        //         // Deploy Prometheus and Grafana for monitoring
-        //         bat "kubectl apply -f k8s/grafana"
-        //         bat "kubectl apply -f k8s/prometheus"
-        //         bat "kubectl rollout restart deployment cargo-tracker-deployment"
-        //     }
-        // }
+        stage('Monitoring Setup') {
+            steps {
+                // Deploy Prometheus and Grafana for monitoring
+                bat "kubectl apply -f k8s/grafana"
+                bat "kubectl apply -f k8s/prometheus"
+                bat "kubectl rollout restart deployment cargo-tracker-deployment"
+            }
+        }
 
     }
 
