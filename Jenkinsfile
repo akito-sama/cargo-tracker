@@ -56,14 +56,21 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes and Monitoring Setup') {
+        stage('Deploy to Kubernetes') {
             steps {
+                // Applies all yaml files in the k8s directory 
                 bat "kubectl apply -f k8s/cargo-tracker"
-                bat "kubectl apply -f k8s/grafana"
-                bat "kubectl apply -f k8s/prometheus"
-                bat "kubectl rollout restart deployment cargo-tracker-deployment"
             }
         }
+
+        // stage('Monitoring Setup') {
+        //     steps {
+        //         // Deploy Prometheus and Grafana for monitoring
+        //         bat "kubectl apply -f k8s/grafana"
+        //         bat "kubectl apply -f k8s/prometheus"
+        //         bat "kubectl rollout restart deployment cargo-tracker-deployment"
+        //     }
+        // }
 
     }
 
