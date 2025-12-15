@@ -37,24 +37,24 @@ pipeline {
             }
         }
 
-        // stage('Docker Build & Push') {
-        //     environment {
-        //         DOCKER_TOKEN = credentials('docker-token-id')
-        //     }
-        //     steps {
-        //         script {
-        //             // login securely
-        //             bat """
-        //             echo %DOCKER_TOKEN% | docker login -u mouadensafir --password-stdin
-        //             """
+        stage('Docker Build & Push') {
+            environment {
+                DOCKER_TOKEN = credentials('docker-token-id')
+            }
+            steps {
+                script {
+                    // login securely
+                    bat """
+                    echo %DOCKER_TOKEN% | docker login -u mouadensafir --password-stdin
+                    """
 
-        //             // build and push
-        //             bat "docker build -t cargo-tracker ."
-        //             bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
-        //             bat "docker push mouadensafir/cargo-tracker:latest"
-        //         }
-        //     }
-        // }
+                    // build and push
+                    bat "docker build -t cargo-tracker ."
+                    bat "docker tag cargo-tracker mouadensafir/cargo-tracker:latest"
+                    bat "docker push mouadensafir/cargo-tracker:latest"
+                }
+            }
+        }
 
         // stage('Deploy to Kubernetes') {
         //     steps {
