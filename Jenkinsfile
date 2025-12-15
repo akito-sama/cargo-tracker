@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploy to Kubernetes and Monitoring Setup') {
             steps {
                 bat "kubectl apply -f k8s/cargo-tracker"
                 bat "kubectl apply -f k8s/grafana"
